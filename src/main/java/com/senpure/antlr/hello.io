@@ -1,8 +1,13 @@
-import ;
-model str;
-javaPackage com.ww;
-message CS 15 Hello {
+message  Cs  Hello 1231000{
+    int   name ;//comment
+    int  age  ;//age
+}
 
-    int name = 1;//姓名
-    int[] codes = 2;//yan
+message   CS  Hi 1001 {
+    int   name ;//comment
+    int age  ;//age
+}
+event   Hi 1001 {
+    int   name ;//comment
+    int age  ;//age
 }
