@@ -18,6 +18,7 @@ public class IoErrorStrategy extends BailErrorStrategy {
 
 
         System.out.println("recoverLine");
+
         return super.recoverInline(recognizer);
     }
 

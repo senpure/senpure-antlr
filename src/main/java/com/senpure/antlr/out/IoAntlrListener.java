@@ -6,32 +6,45 @@ package com.senpure.antlr.out;
  * @author senpure
  * @time 2019-05-10 15:20:41
  */
-public class IoAntlrListener extends  IoBaseListener {
+public class IoAntlrListener extends IoBaseListener {
 
-   private  IoParser parser ;
+    private IoParser parser;
+
+    private StringBuilder sb = new StringBuilder();
 
     public IoAntlrListener(IoParser parser) {
         this.parser = parser;
     }
 
+
+
+    @Override
+    public void enterOtherIo(IoParser.OtherIoContext ctx) {
+        System.out.println( methodName()+"  "+ctx.getText() );
+    }
+
+    @Override
+    public void enterJavaPackage(IoParser.JavaPackageContext ctx) {
+        parser.getCurrentToken().getLine();
+
+        System.out.println( methodName()+"  "+ctx.getText()+"  " );
+    }
+
+    @Override
+    public void enterModel(IoParser.ModelContext ctx) {
+        System.out.println( methodName()+"  "+ctx.getText() );
+    }
+
     @Override
     public void enterMessage(IoParser.MessageContext ctx) {
-        System.out.println("enter message "+ctx.toStringTree(parser));
+
+        System.out.println( methodName()+"  "+ctx.getText() );
     }
 
-    @Override
-    public void exitMessage(IoParser.MessageContext ctx) {
+    public String methodName() {
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        return stackTraceElements[2].getMethodName();
 
-        System.out.println("exit message "+ctx.toStringTree(parser));
     }
 
-    @Override
-    public void enterProtocol(IoParser.ProtocolContext ctx) {
-        System.out.println("enter protocol "+ctx.toStringTree(parser));
-    }
-
-    @Override
-    public void exitProtocol(IoParser.ProtocolContext ctx) {
-        System.out.println("exit protocol "+ctx.toStringTree(parser));
-    }
 }

@@ -174,6 +174,7 @@ compilationUnit
 	:	packageDeclaration? importDeclaration* typeDeclaration* EOF
 	;
 
+
 packageDeclaration
 	:	packageModifier* 'package' packageName ';'
 	;
